@@ -196,23 +196,33 @@ layout: null
 
   .feature-photo {
     position: relative;
+    padding-bottom: 60px;
+    padding-right: 20px;
+  }
+  .feature-bg {
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 30px 60px -30px rgba(60, 45, 30, .35);
   }
   .feature-photo .screen {
     position: absolute;
-    bottom: -8%;
-    right: -12%;
-    width: 38%;
-    border-radius: 16px;
+    bottom: 0;
+    right: 0;
+    width: 32%;
+    height: auto;
+    border-radius: 18px;
     box-shadow: 0 18px 36px -8px rgba(40,30,20,.45);
-    border: 4px solid #FFF;
+    border: 5px solid #FFF;
+    background: #FFF;
   }
   @media (max-width: 880px) {
+    .feature-photo {
+      padding-bottom: 80px;
+      padding-right: 0;
+    }
     .feature-photo .screen {
       width: 30%;
-      right: -4%;
+      right: 8%;
     }
   }
 
@@ -230,11 +240,27 @@ layout: null
     line-height: 1.6;
     margin: 0 0 28px;
   }
+  .feature-text .lead {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(17px, 1.55vw, 19px);
+    line-height: 2.0;
+    color: var(--ink);
+    margin: 0 0 18px;
+    border-left: 2px solid var(--terracotta);
+    padding-left: 18px;
+  }
   .feature-text p {
     font-family: var(--round);
     line-height: 2.0;
     color: var(--ink-soft);
-    margin: 0 0 24px;
+    margin: 0 0 28px;
+  }
+  .feature-text strong {
+    font-weight: 500;
+    color: var(--ink);
+    background: linear-gradient(transparent 60%, rgba(199, 123, 91, .22) 60%, rgba(199, 123, 91, .22) 92%, transparent 92%);
+    padding: 0 2px;
   }
   .feature-text ul {
     list-style: none;
@@ -242,13 +268,27 @@ layout: null
     margin: 0;
   }
   .feature-text li {
-    padding: 14px 0;
+    padding: 16px 0 16px 28px;
     border-top: 1px solid var(--rule);
     color: var(--ink-soft);
     font-size: 15px;
     letter-spacing: .04em;
+    position: relative;
+  }
+  .feature-text li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 28px;
+    width: 12px;
+    height: 1px;
+    background: var(--terracotta);
   }
   .feature-text li:last-child { border-bottom: 1px solid var(--rule); }
+  .feature-text li b {
+    font-weight: 500;
+    color: var(--ink);
+  }
 
   /* Quote section */
   .quote {
@@ -444,20 +484,23 @@ layout: null
   <!-- Feature 1: 記録 -->
   <div class="feature">
     <div class="feature-photo">
-      <img src="images/lp-section-craft.jpg" alt="木のテーブルで曲げわっぱの弁当を真上から撮影する瞬間">
+      <div class="feature-bg">
+        <img src="images/lp-section-craft.jpg" alt="木のテーブルで曲げわっぱの弁当を真上から撮影する瞬間">
+      </div>
       <img class="screen" src="images/screen-new-bento.png" alt="弁当を新規登録する画面" loading="lazy">
     </div>
     <div class="feature-text">
       <div class="label">RECORD</div>
       <h3>並べるだけの、<br>かんたんな記録。</h3>
+      <p class="lead">おかず名と日付、写真を 1 枚。<br>それだけで、その日のお弁当が献立帳に並びます。</p>
       <p>
-        おかず名と日付、写真を 1 枚。それだけで、その日のお弁当があなたの献立帳に並びます。<br>
-        手間を増やさないことが、続けるための一番の近道です。
+        <strong>手間を増やさないこと</strong>が、続けるための一番の近道。<br>
+        毎日の小さな記録が、いつか家族のレシピ集になります。
       </p>
       <ul>
-        <li>カレンダー上に「いつ・何を作ったか」が一目でわかる</li>
-        <li>過去のおかずから 1 タップで再追加</li>
-        <li>写真は本人の領域だけにアップロード（家族のみ閲覧可能）</li>
+        <li>カレンダー上に <b>「いつ・何を作ったか」</b> が一目でわかる</li>
+        <li>過去のおかずから <b>1 タップで再追加</b></li>
+        <li>写真は本人の領域だけにアップロード <b>（家族のみ閲覧可能）</b></li>
       </ul>
     </div>
   </div>
@@ -467,20 +510,22 @@ layout: null
   <!-- Feature 2: 評価 -->
   <div class="feature reverse">
     <div class="feature-photo">
-      <img src="images/lp-section-share.jpg" alt="食卓を囲む家族 3 人の手とお弁当、湯気の立つ食事">
+      <div class="feature-bg">
+        <img src="images/lp-section-share.jpg" alt="食卓を囲む家族 3 人の手とお弁当、湯気の立つ食事">
+      </div>
       <img class="screen" src="images/screen-eat.png" alt="食べて評価する画面" loading="lazy">
     </div>
     <div class="feature-text">
       <div class="label">SHARE</div>
       <h3>家族で、星をつける。</h3>
+      <p class="lead">「美味しかった」「また作って」を<br>ひとことで残せます。</p>
       <p>
-        「美味しかった」「また作って」をひとことで残せます。<br>
-        ★ 1〜5 の星と短いコメントが、作る人へのいちばんの応援になります。
+        <strong>★ 1〜5 の星と短いコメント</strong>が、毎日キッチンに立つ人への、家族からのいちばんの応援になります。
       </p>
       <ul>
-        <li>おかず単位で評価できるので「次に何を作るか」が選びやすい</li>
-        <li>家族メンバーがそれぞれの好みを記録</li>
-        <li>感想は家族グループ内だけに共有</li>
+        <li>おかず単位で評価できるので <b>「次に何を作るか」</b> が選びやすい</li>
+        <li>家族メンバーが <b>それぞれの好み</b> を記録</li>
+        <li>感想は <b>家族グループ内だけ</b> に共有</li>
       </ul>
     </div>
   </div>
@@ -490,20 +535,23 @@ layout: null
   <!-- Feature 3: ランキング -->
   <div class="feature">
     <div class="feature-photo">
-      <img src="images/lp-section-archive.jpg" alt="木の棚に並ぶ古いレシピノート、子供のクレヨン画、家族写真、ドライフラワー">
+      <div class="feature-bg">
+        <img src="images/lp-section-archive.jpg" alt="木の棚に並ぶ古いレシピノート、子供のクレヨン画、家族写真、ドライフラワー">
+      </div>
       <img class="screen" src="images/screen-stats.png" alt="またつくってランキングを表示する画面" loading="lazy">
     </div>
     <div class="feature-text">
       <div class="label">ARCHIVE</div>
       <h3>「またつくって」が<br>見えてくる。</h3>
+      <p class="lead">家族が本当に喜んだおかずが、<br>ランキングで自然と浮かび上がる。</p>
       <p>
-        集まった評価から、家族が本当に喜んだおかずがランキングで自然と浮かび上がります。<br>
-        毎日のレパートリーに迷ったら、家族のお気に入りから選ぶだけ。
+        毎日のレパートリーに迷ったら、<strong>家族のお気に入りから選ぶだけ</strong>。<br>
+        作る人の判断を、いつも家族の声がそっと支えます。
       </p>
       <ul>
-        <li>★ 平均と作った回数で家族の好みが見える</li>
-        <li>月ごとの「お弁当数」「平均評価」「レシピ数」を集計</li>
-        <li>過去の感想がアプリの中にずっと残る</li>
+        <li><b>★ 平均と作った回数</b> で家族の好みが見える</li>
+        <li>月ごとの <b>お弁当数 / 平均評価 / レシピ数</b> を自動集計</li>
+        <li>過去の感想がアプリの中に <b>ずっと残る</b></li>
       </ul>
     </div>
   </div>
