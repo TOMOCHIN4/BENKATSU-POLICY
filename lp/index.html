@@ -1,0 +1,553 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="うちの弁活 — 「また作って」だけを、作るためのアプリ。家族の食卓を、もっと愛おしく。">
+<meta name="theme-color" content="#FBF7F0">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="うちの弁活｜「また作って」だけを、作るためのアプリ">
+<meta property="og:description" content="家族のお弁当を、ひとつずつ大切に。「また作って」と言われた献立を集めていく iOS アプリ。">
+<meta property="og:image" content="https://tomochin4.github.io/BENKATSU-POLICY/lp/images/lp-hero-wide.jpg">
+<meta property="og:url" content="https://tomochin4.github.io/BENKATSU-POLICY/lp/">
+<meta name="twitter:card" content="summary_large_image">
+
+<title>うちの弁活｜「また作って」だけを、作るためのアプリ</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;700&family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FBF7F0;
+    --bg-soft: #F1E8D8;
+    --bg-deep: #2A2520;
+    --ink: #2A2520;
+    --ink-soft: #5A4F44;
+    --warm-brown: #8C7353;
+    --terracotta: #C77B5B;
+    --moss: #7B8C6E;
+    --rule: #D9CDB8;
+    --serif: "Shippori Mincho B1", "Yu Mincho", "YuMincho", serif;
+    --round: "Klee One", "Hiragino Maru Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+    --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--round);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.95;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--warm-brown); text-decoration: none; transition: color .2s; }
+  a:hover { color: var(--terracotta); }
+
+  /* ===================== Header ===================== */
+  .site-head {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 32px 40px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFF;
+    text-shadow: 0 1px 8px rgba(0,0,0,.25);
+  }
+  .site-head .brand {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .15em;
+  }
+  .site-head .nav a {
+    color: #FFF;
+    margin-left: 28px;
+    font-size: 14px;
+    letter-spacing: .12em;
+    opacity: .9;
+  }
+  .site-head .nav a:hover { color: #FFF; opacity: 1; }
+
+  /* ===================== Hero ===================== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 640px;
+    max-height: 920px;
+    overflow: hidden;
+    background: #2A2520;
+  }
+  .hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,.45) 100%);
+  }
+  .hero-content {
+    position: absolute;
+    left: 0; right: 0; bottom: 12vh;
+    text-align: center;
+    color: #FFF;
+    padding: 0 24px;
+    z-index: 2;
+  }
+  .hero-content .eyebrow {
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: .35em;
+    opacity: .85;
+    margin-bottom: 28px;
+    text-shadow: 0 1px 6px rgba(0,0,0,.4);
+  }
+  .hero-content h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(34px, 5vw, 60px);
+    line-height: 1.4;
+    margin: 0 0 22px;
+    text-shadow: 0 2px 12px rgba(0,0,0,.45);
+  }
+  .hero-content p {
+    font-family: var(--round);
+    font-size: clamp(15px, 1.4vw, 18px);
+    margin: 0;
+    opacity: .92;
+    text-shadow: 0 1px 8px rgba(0,0,0,.4);
+  }
+
+  /* ===================== Sections ===================== */
+  .section {
+    padding: 140px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media (max-width: 760px) {
+    .section { padding: 96px 24px; }
+  }
+
+  /* Brand statement */
+  .statement {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .statement h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(24px, 3.4vw, 36px);
+    line-height: 2;
+    margin: 0 0 32px;
+    color: var(--ink);
+  }
+  .statement p {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 2.2;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .statement .ornament {
+    width: 1px;
+    height: 56px;
+    background: var(--rule);
+    margin: 56px auto;
+  }
+
+  /* Feature row (image + text) */
+  .feature {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .feature.reverse { grid-template-columns: 1fr 1.1fr; }
+  .feature.reverse .feature-photo { order: 2; }
+  @media (max-width: 880px) {
+    .feature, .feature.reverse {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .feature.reverse .feature-photo { order: 0; }
+  }
+
+  .feature-photo {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(60, 45, 30, .35);
+  }
+  .feature-photo .screen {
+    position: absolute;
+    bottom: -8%;
+    right: -12%;
+    width: 38%;
+    border-radius: 16px;
+    box-shadow: 0 18px 36px -8px rgba(40,30,20,.45);
+    border: 4px solid #FFF;
+  }
+  @media (max-width: 880px) {
+    .feature-photo .screen {
+      width: 30%;
+      right: -4%;
+    }
+  }
+
+  .feature-text .label {
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: .35em;
+    color: var(--terracotta);
+    margin-bottom: 24px;
+  }
+  .feature-text h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(24px, 2.6vw, 32px);
+    line-height: 1.6;
+    margin: 0 0 28px;
+  }
+  .feature-text p {
+    font-family: var(--round);
+    line-height: 2.0;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .feature-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .feature-text li {
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-size: 15px;
+    letter-spacing: .04em;
+  }
+  .feature-text li:last-child { border-bottom: 1px solid var(--rule); }
+
+  /* Quote section */
+  .quote {
+    position: relative;
+    padding: 0;
+    max-width: none;
+    margin: 80px 0;
+    overflow: hidden;
+  }
+  .quote-bg {
+    position: relative;
+    width: 100%;
+    height: 56vh;
+    min-height: 420px;
+    overflow: hidden;
+  }
+  .quote-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .quote-bg::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(251,247,240,.35), rgba(251,247,240,.85));
+  }
+  .quote-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 24px;
+    z-index: 2;
+  }
+  .quote-text blockquote {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(22px, 3.2vw, 36px);
+    line-height: 2;
+    color: var(--ink);
+    margin: 0;
+    max-width: 780px;
+  }
+  .quote-text cite {
+    font-family: var(--serif);
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: .3em;
+    color: var(--ink-soft);
+    margin-top: 32px;
+  }
+
+  /* CTA */
+  .cta {
+    text-align: center;
+    padding: 140px 40px 100px;
+    background: var(--bg-soft);
+  }
+  .cta h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(26px, 3.4vw, 38px);
+    line-height: 1.7;
+    margin: 0 0 20px;
+  }
+  .cta p {
+    font-family: var(--round);
+    color: var(--ink-soft);
+    margin: 0 0 48px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    background: var(--ink);
+    color: #FFF;
+    border-radius: 12px;
+    font-family: var(--sans);
+    font-size: 16px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .badge:hover {
+    color: #FFF;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -8px rgba(40,30,20,.35);
+  }
+  .badge .apple {
+    font-size: 22px;
+    line-height: 1;
+  }
+  .badge .small {
+    font-size: 11px;
+    opacity: .75;
+    display: block;
+    letter-spacing: .12em;
+  }
+  .badge .big {
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: .04em;
+  }
+  .cta .links {
+    margin-top: 56px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .cta .links a { margin: 0 14px; }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 56px 24px;
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-size: 12px;
+    letter-spacing: .12em;
+    border-top: 1px solid var(--rule);
+  }
+  footer .brand-mark {
+    font-family: var(--serif);
+    font-size: 14px;
+    letter-spacing: .25em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  footer .links a { margin: 0 14px; }
+
+  /* Section heading helper */
+  .section-head {
+    text-align: center;
+    margin-bottom: 96px;
+  }
+  .section-head .label {
+    font-family: var(--serif);
+    font-size: 12px;
+    letter-spacing: .35em;
+    color: var(--terracotta);
+    margin-bottom: 18px;
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(26px, 3.4vw, 36px);
+    line-height: 1.7;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="brand">うちの弁活</div>
+  <nav class="nav">
+    <a href="#features">特徴</a>
+    <a href="#download">ダウンロード</a>
+  </nav>
+</header>
+
+<!-- ============== Hero ============== -->
+<section class="hero">
+  <img src="images/lp-hero-wide.jpg" alt="夜明けの台所で、母親がお弁当を整え、父親がコーヒーを淹れ、子供がパジャマで通り過ぎる家族の朝の風景">
+  <div class="hero-content">
+    <div class="eyebrow">UCHI NO BENKATSU</div>
+    <h1>「また作って」だけを、<br>作るためのアプリ。</h1>
+    <p>家族の食卓を、もっと愛おしく。</p>
+  </div>
+</section>
+
+<!-- ============== Brand statement ============== -->
+<section class="section statement">
+  <h2>毎朝の 30 分が、<br>家族の物語になる。</h2>
+  <p>
+    手早く詰める、彩りを考える、好みを覚える。<br>
+    繰り返される朝の小さな仕草の積み重ねが、いつしか家族の歴史になります。<br>
+    うちの弁活は、その毎日に静かに寄り添い、<br>
+    「また作って」と言われた一品を、丁寧に集めていくためのアプリです。
+  </p>
+  <div class="ornament" aria-hidden="true"></div>
+</section>
+
+<!-- ============== Features ============== -->
+<section id="features" class="section">
+  <div class="section-head">
+    <div class="label">FEATURES</div>
+    <h2>暮らしに溶け込む、<br>三つのささやかな機能。</h2>
+  </div>
+
+  <!-- Feature 1: 記録 -->
+  <div class="feature">
+    <div class="feature-photo">
+      <img src="images/lp-section-craft.jpg" alt="木のテーブルで曲げわっぱの弁当を真上から撮影する瞬間">
+      <img class="screen" src="images/screen-new-bento.png" alt="弁当を新規登録する画面" loading="lazy">
+    </div>
+    <div class="feature-text">
+      <div class="label">RECORD</div>
+      <h3>並べるだけの、<br>かんたんな記録。</h3>
+      <p>
+        おかず名と日付、写真を 1 枚。それだけで、その日のお弁当があなたの献立帳に並びます。<br>
+        手間を増やさないことが、続けるための一番の近道です。
+      </p>
+      <ul>
+        <li>カレンダー上に「いつ・何を作ったか」が一目でわかる</li>
+        <li>過去のおかずから 1 タップで再追加</li>
+        <li>写真は本人の領域だけにアップロード（家族のみ閲覧可能）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <!-- Feature 2: 評価 -->
+  <div class="feature reverse">
+    <div class="feature-photo">
+      <img src="images/lp-section-share.jpg" alt="食卓を囲む家族 3 人の手とお弁当、湯気の立つ食事">
+      <img class="screen" src="images/screen-eat.png" alt="食べて評価する画面" loading="lazy">
+    </div>
+    <div class="feature-text">
+      <div class="label">SHARE</div>
+      <h3>家族で、星をつける。</h3>
+      <p>
+        「美味しかった」「また作って」をひとことで残せます。<br>
+        ★ 1〜5 の星と短いコメントが、作る人へのいちばんの応援になります。
+      </p>
+      <ul>
+        <li>おかず単位で評価できるので「次に何を作るか」が選びやすい</li>
+        <li>家族メンバーがそれぞれの好みを記録</li>
+        <li>感想は家族グループ内だけに共有</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <!-- Feature 3: ランキング -->
+  <div class="feature">
+    <div class="feature-photo">
+      <img src="images/lp-section-archive.jpg" alt="木の棚に並ぶ古いレシピノート、子供のクレヨン画、家族写真、ドライフラワー">
+      <img class="screen" src="images/screen-stats.png" alt="またつくってランキングを表示する画面" loading="lazy">
+    </div>
+    <div class="feature-text">
+      <div class="label">ARCHIVE</div>
+      <h3>「またつくって」が<br>見えてくる。</h3>
+      <p>
+        集まった評価から、家族が本当に喜んだおかずがランキングで自然と浮かび上がります。<br>
+        毎日のレパートリーに迷ったら、家族のお気に入りから選ぶだけ。
+      </p>
+      <ul>
+        <li>★ 平均と作った回数で家族の好みが見える</li>
+        <li>月ごとの「お弁当数」「平均評価」「レシピ数」を集計</li>
+        <li>過去の感想がアプリの中にずっと残る</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Quote ============== -->
+<section class="quote">
+  <div class="quote-bg">
+    <img src="images/lp-mood-quiet.jpg" alt="朝の和室、障子越しの柔らかい光、空のお弁当箱と急須">
+  </div>
+  <div class="quote-text">
+    <blockquote>同じ朝の繰り返しが、<br>家族の歴史になる。</blockquote>
+    <cite>UCHI NO BENKATSU</cite>
+  </div>
+</section>
+
+<!-- ============== CTA ============== -->
+<section id="download" class="cta">
+  <h2>今日から、家族の<br>「また作って」を集めはじめる。</h2>
+  <p>iPhone 向け、無料。Sign in with Apple のみで、メールアドレスや SNS 連携は不要です。</p>
+  <a class="badge" href="https://apps.apple.com/jp/app/id6762541266" rel="noopener">
+    <span class="apple"></span>
+    <span>
+      <span class="small">Download on the</span>
+      <span class="big">App Store</span>
+    </span>
+  </a>
+  <div class="links">
+    <a href="../support/">サポート</a>
+    <span aria-hidden="true">/</span>
+    <a href="../privacy-policy/">プライバシーポリシー</a>
+  </div>
+</section>
+
+<!-- ============== Footer ============== -->
+<footer>
+  <div class="brand-mark">うちの弁活</div>
+  <div class="links">
+    <a href="../">ホーム</a>
+    <a href="../support/">サポート</a>
+    <a href="../privacy-policy/">プライバシー</a>
+  </div>
+  <div style="margin-top:18px; opacity:.65;">© 2026 TOMOCHIN4</div>
+</footer>
+
+</body>
+</html>
